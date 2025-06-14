@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile-Linkme</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .profile img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin-bottom: 1rem;
+        }
+
+        .profile h1 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+        }
+
+        .links {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .link-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .link-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .link-card img {
+            width: 24px;
+            height: 24px;
+            margin-right: 1rem;
+        }
+
+        .link-card span {
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile">
+        <img src="images/profile-image.jpg" alt="プロフィール画像">
+        <h1>大石凌央（おおいしりょお）</h1>
+        <p>ゼロ高生/08 <br>システム開発・アプリ開発やってます！</p>
+    </div>
+
+    <div class="links">
+        <a href="https://www.instagram.com/ryo.o.624?igsh=ODNoY2t3bmQ1a2lk&utm_source=qr" class="link-card" target="_blank">
+            <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/instagram.svg" alt="Instagram">
+            <span>Instagram</span>
+        </a>
+        <a href="https://line.me/ti/p/nKnONNzD37" class="link-card" target="_blank">
+            <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/line.svg" alt="LINE">
+            <span>LINE</span>
+        </a>
+        <a href="https://www.facebook.com/share/15SaNWaAPK/?mibextid=wwXlfr" class="link-card" target="_blank">
+            <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/facebook.svg" alt="Facebook">
+            <span>Facebook</span>
+        </a>
+        <a href="https://www.tiktok.com/@ryo64240?_t=ZS-8xCSTieezbe&_r=1" class="link-card" target="_blank">
+            <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/tiktok.svg" alt="TikTok">
+            <span>TikTok</span>
+        </a>
+        <a href="https://x.com/ryoo31415?s=11" class="link-card" target="_blank">
+            <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/x.svg" alt="X">
+            <span>X (Twitter)</span>
+        </a>
+        <a href="mailto:ryo452094@gmail.com" class="link-card">
+            <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/gmail.svg" alt="Email">
+            <span>メール</span>
+        </a>
+    </div>
+</body>
+</html> 
