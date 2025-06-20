@@ -9,16 +9,29 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
         }
 
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 2rem;
+            transition: background 0.5s ease;
+        }
+
+        body.business {
+            background: linear-gradient(135deg, #1e40af 0%, #1e293b 100%);
         }
 
         .profile {
@@ -36,7 +49,7 @@
 
         .profile h2 {
             color: white;
-            font-size: 20px;
+            font-size: 1.8rem;
             margin-bottom: 0.5rem;
         }
 
@@ -45,9 +58,55 @@
             font-size: 1rem;
         }
 
+        .profile-description {
+            display: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .profile-description.active {
+            display: block;
+        }
+
+        .tab-container {
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 1rem;
+        }
+
+        .tabs {
+            display: flex;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .tab.active {
+            background: white;
+            color: #333;
+        }
+
         .links {
             width: 100%;
             max-width: 400px;
+        }
+
+        .link-section {
+            display: none;
+        }
+
+        .link-section.active {
+            display: block;
         }
 
         .link-card {
@@ -76,40 +135,147 @@
         .link-card span {
             font-weight: 500;
         }
+
+        .website-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 1rem;
+            background: #333;
+            border-radius: 50%;
+            position: relative;
+            display: inline-block;
+        }
+
+        .website-icon::before {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            right: 3px;
+            bottom: 3px;
+            border: 1.5px solid white;
+            border-radius: 50%;
+        }
+
+        .website-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: 
+                linear-gradient(90deg, transparent 45%, white 45%, white 55%, transparent 55%),
+                linear-gradient(0deg, transparent 45%, white 45%, white 55%, transparent 55%),
+                radial-gradient(ellipse 8px 16px at center, transparent 40%, white 40%, white 60%, transparent 60%);
+        }
     </style>
 </head>
 <body>
     <div class="profile">
-        <img src="profile-image.jpg" alt="プロフィール画像">
+        <img src="images/profile-image.jpg" alt="プロフィール画像">
         <h2>大石凌央（おおいしりょお）</h2>
-        <p>ゼロ高生/08 <br>システム開発・アプリ開発やってます！</p>
+        <p id="personal-description" class="profile-description active">ゼロ高生/08 <br>システム開発・アプリ開発やってます！</p>
+        <p id="business-description" class="profile-description">NEXRO代表<br>システム開発・アプリ開発<br>お気軽にご相談ください</p>
+    </div>
+
+    <div class="tab-container">
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('personal')">個人</div>
+            <div class="tab" onclick="switchTab('business')">ビジネス</div>
+        </div>
     </div>
 
     <div class="links">
-        <a href="https://www.instagram.com/ryo.o.624?igsh=ODNoY2t3bmQ1a2lk&utm_source=qr" class="link-card" target="_blank">
-            <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/instagram.svg" alt="Instagram">
-            <span>Instagram</span>
-        </a>
-        <a href="https://line.me/ti/p/nKnONNzD37" class="link-card" target="_blank">
-            <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/line.svg" alt="LINE">
-            <span>LINE</span>
-        </a>
-        <a href="https://www.facebook.com/share/15SaNWaAPK/?mibextid=wwXlfr" class="link-card" target="_blank">
-            <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/facebook.svg" alt="Facebook">
-            <span>Facebook</span>
-        </a>
-        <a href="https://www.tiktok.com/@ryo64240?_t=ZS-8xCSTieezbe&_r=1" class="link-card" target="_blank">
-            <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/tiktok.svg" alt="TikTok">
-            <span>TikTok</span>
-        </a>
-        <a href="https://x.com/ryoo31415?s=11" class="link-card" target="_blank">
-            <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/x.svg" alt="X">
-            <span>X (Twitter)</span>
-        </a>
-        <a href="mailto:ryo452094@gmail.com" class="link-card">
-            <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/gmail.svg" alt="Email">
-            <span>メール</span>
-        </a>
+        <!-- 個人用リンク -->
+        <div id="personal" class="link-section active">
+            <a href="https://www.instagram.com/ryo.o.624?igsh=ODNoY2t3bmQ1a2lk&utm_source=qr" class="link-card" target="_blank">
+                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/instagram.svg" alt="Instagram">
+                <span>Instagram</span>
+            </a>
+            <a href="https://line.me/ti/p/nKnONNzD37" class="link-card" target="_blank">
+                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/line.svg" alt="LINE">
+                <span>LINE</span>
+            </a>
+            <a href="https://www.facebook.com/share/15SaNWaAPK/?mibextid=wwXlfr" class="link-card" target="_blank">
+                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/facebook.svg" alt="Facebook">
+                <span>Facebook</span>
+            </a>
+            <a href="https://www.tiktok.com/@ryo64240?_t=ZS-8xCSTieezbe&_r=1" class="link-card" target="_blank">
+                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/tiktok.svg" alt="TikTok">
+                <span>TikTok</span>
+            </a>
+            <a href="https://x.com/ryoo31415?s=11" class="link-card" target="_blank">
+                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/x.svg" alt="X">
+                <span>X (Twitter)</span>
+            </a>
+            <!-- <a href="https://www.youtube.com/@yourusername" class="link-card" target="_blank">
+                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/youtube.svg" alt="YouTube">
+                <span>YouTube</span>
+            </a> -->
+            <a href="mailto:ryo452094@gmail.com" class="link-card">
+                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/gmail.svg" alt="Email">
+                <span>メール</span>
+            </a>
+        </div>
+
+        <!-- ビジネス用リンク -->
+        <div id="business" class="link-section">
+            <a href="https://yourwebsite.com" class="link-card" target="_blank">
+                <div class="website-icon"></div>
+                <span>Webサイト</span>
+            </a>
+            <a href="https://www.instagram.com/nexro_dev?igsh=MWp0ZXh0eXA1ejVqOA%3D%3D&utm_source=qr" class="link-card" target="_blank">
+                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/instagram.svg" alt="Instagram">
+                <span>Instagram</span>
+            </a>
+            <a href="https://www.tiktok.com/@nexro_dev?_t=ZS-8xMlBpIXBSR&_r=1" class="link-card" target="_blank">
+                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/tiktok.svg" alt="TikTok">
+                <span>TikTok</span>
+            </a>
+            <a href="https://lin.ee/eJeXa6Xm" class="link-card" target="_blank">
+                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/line.svg" alt="公式LINE">
+                <span>公式LINE</span>
+            </a>
+            <a href="https://x.com/nexro_dev?s=21" class="link-card" target="_blank">
+                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/x.svg" alt="X">
+                <span>X (Twitter)</span>
+            </a>
+            <a href="mailto:nexro0424@gmail.com" class="link-card">
+                <img src="https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/gmail.svg" alt="Business Email">
+                <span>ビジネスメール</span>
+            </a>
+        </div>
     </div>
+
+    <script>
+        function switchTab(tab) {
+            // タブの切り替え
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelector(`.tab:nth-child(${tab === 'personal' ? '1' : '2'})`).classList.add('active');
+            
+            // コンテンツの切り替え
+            document.querySelectorAll('.link-section').forEach(section => section.classList.remove('active'));
+            document.getElementById(tab).classList.add('active');
+            
+            // プロフィール説明文の切り替え
+            document.querySelectorAll('.profile-description').forEach(desc => desc.classList.remove('active'));
+            if (tab === 'business') {
+                document.getElementById('business-description').classList.add('active');
+            } else {
+                document.getElementById('personal-description').classList.add('active');
+            }
+            
+            // 背景の切り替え
+            const body = document.body;
+            if (tab === 'business') {
+                body.classList.add('business');
+            } else {
+                body.classList.remove('business');
+            }
+        }
+    </script>
 </body>
 </html> 
